@@ -9,32 +9,10 @@ X, O, BLANK = 'X', 'O', ' '  # 문자열 값에 대한 상수
 
 def main():
     print('Welcome to Tic-Tac-Toe!')
-    gameBoard = getBlankBoard()  # 틱-택-토 보드 딕셔너리를 생성한다.
-    currentPlayer, nextPlayer = X, O  # X가 먼저 나오고, 그 다음에 O가 나온다.
+    # 틱-택-토 보드 딕셔너리를 생성한다.
+    # X가 먼저 나오고, 그 다음에 O가 나온다.
 
-    while True:  # 메인 게임 루프
-        # 화면에 보드 표시하기:
-        print(getBoardStr(gameBoard))
-
-        # 사용자가 1-9 숫자를 입력할 때까지 계속 요청한다:
-        move = None
-        while not isValidSpace(gameBoard, move):
-            print('What is {}\'s move? (1-9)'.format(currentPlayer))
-            move = input('> ')
-        updateBoard(gameBoard, move, currentPlayer)  # 턴을 진행한다.
-
-        # 게임이 끝났는지 확인한다:
-        if isWinner(gameBoard, currentPlayer):  # 승자를 확인한다.
-            print(getBoardStr(gameBoard))
-            print(currentPlayer + ' has won the game!')
-            break
-        elif isBoardFull(gameBoard):  # 무승부인지 확인한다.
-            print(getBoardStr(gameBoard))
-            print('The game is a tie!')
-            break
-        # 다음 플레이어 턴으로 바꾼다:
-        currentPlayer, nextPlayer = nextPlayer, currentPlayer
-    print('Thanks for playing!')
+    
 
 
 def getBlankBoard():
@@ -65,7 +43,7 @@ def getBoardStr(board):
 def isValidSpace(board, space):
     """보드의 공백이 유효한 공백 번호고 비어 있다면
     True를 반환한다."""
-    return space in ALL_SPACES and board[space] == BLANK
+    
 
 
 def isWinner(board, player):
@@ -84,15 +62,12 @@ def isWinner(board, player):
 
 def isBoardFull(board):
     """보드의 모든 공간이 채워지면 True를 반환한다."""
-    for space in ALL_SPACES:
-        if board[space] == BLANK:
-            return False  # 만약에 빈칸이 있다면 False를 반환한다.
-    return True  # 빈칸이 없다면 True를 반환한다.
+    
 
 
 def updateBoard(board, space, mark):
     """보드에 표시할 공간을 설정한다."""
-    board[space] = mark
+    
 
 
 if __name__ == '__main__':

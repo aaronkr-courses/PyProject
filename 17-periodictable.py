@@ -12,10 +12,7 @@ Tags: short, science"""
 import csv, sys, re
 
 # periodictable.csv로부터 모든 데이터를 읽는다.
-elementsFile = open('periodictable.csv', encoding='utf-8')
-elementsCsvReader = csv.reader(elementsFile)
-elements = list(elementsCsvReader)
-elementsFile.close()
+elementsFile = ''
 
 ALL_COLUMNS = ['Atomic Number', 'Symbol', 'Element', 'Origin of name',
                'Group', 'Period', 'Atomic weight', 'Density',
@@ -25,9 +22,7 @@ ALL_COLUMNS = ['Atomic Number', 'Symbol', 'Element', 'Origin of name',
 
 # 텍스트를 정렬하려면 ALL_COLUMNS에서 가장 긴 문자열을 찾아야 한다.
 LONGEST_COLUMN = 0
-for key in ALL_COLUMNS:
-    if len(key) > LONGEST_COLUMN:
-        LONGEST_COLUMN = len(key)
+
 
 # 모든 원소 데이터를 데이터 구조에 넣는다:
 ELEMENTS = {}  # 모든 원소 데이터를 저장하고 있는 데이터 구조
@@ -75,15 +70,4 @@ while True:  # 메인 프로그램 루프
 
             Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu
             Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr''')
-    print('Enter a symbol or atomic number to examine, or QUIT to quit.')
-    response = input('> ').title()
-
-    if response == 'Quit':
-        sys.exit()
-
-    # 선택된 원소의 데이터를 표시한다:
-    if response in ELEMENTS:
-        for key in ALL_COLUMNS:
-            keyJustified = key.rjust(LONGEST_COLUMN)
-            print(keyJustified + ': ' + ELEMENTS[response][key])
-        input('Press Enter to continue...')
+    

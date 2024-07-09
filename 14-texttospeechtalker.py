@@ -16,7 +16,7 @@ except ImportError:
     print('pip3 install pyttsx3')
     sys.exit()
 
-tts = pyttsx3.init()  # TTS 엔진을 초기화한다.
+# TTS 엔진을 초기화한다.
 
 print('Text To Speech Talker, by Al Sweigart al@inventwithpython.com')
 print('Text-to-speech using the pyttsx3 module, which in turn uses')
@@ -24,12 +24,3 @@ print('the NSSpeechSynthesizer (on macOS), SAPI5 (on Windows), or')
 print('eSpeak (on Linux) speech engines.')
 print()
 print('Enter the text to speak, or QUIT to quit.')
-while True:
-    text = input('> ')
-
-    if text.upper() == 'QUIT':
-        print('Thanks for playing!')
-        sys.exit()
-
-    tts.say(text)  # TTS 엔진이 말할 텍스트를 추가한다.
-    tts.runAndWait()  # TTS 엔진이 말하도록 한다.
